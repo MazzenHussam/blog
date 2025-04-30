@@ -1,0 +1,96 @@
+<%- include("partials/header") %>
+
+<section class="py-16 px-4 bg-gray-50 min-h-screen">
+    <div class="container mx-auto max-w-3xl">
+      <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Create New Blog Post</h1>
+      
+      <div class="bg-white rounded-lg shadow-md p-8">
+        <form action="/create" method="POST" enctype="multipart/form-data">
+          <!-- Blog Title -->
+          <div class="mb-6">
+            <label for="title" class="block text-gray-700 font-medium mb-2">Blog Title</label>
+            <input 
+              type="text" 
+              id="title" 
+              name="title" 
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              placeholder="Enter your blog title" 
+              required
+            >
+          </div>
+          
+          <!-- Featured Image -->
+          <div class="mb-6">
+            <label for="featured_image" class="block text-gray-700 font-medium mb-2">Featured Image</label>
+            <input 
+              type="file" 
+              id="featured_image" 
+              name="featured_image" 
+              accept="image/*"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+            >
+          </div>
+          
+          <!-- Blog Content -->
+          <div class="mb-6">
+            <label for="content" class="block text-gray-700 font-medium mb-2">Blog Content</label>
+            <textarea 
+              id="content" 
+              name="content" 
+              rows="10" 
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              placeholder="Start writing your blog post here..." 
+              required
+            ></textarea>
+          </div>
+          
+          <!-- Tags -->
+          <div class="mb-8">
+            <label for="tags" class="block text-gray-700 font-medium mb-2">Tags (comma separated)</label>
+            <input 
+              type="text" 
+              id="tags" 
+              name="tags" 
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+              placeholder="technology, travel, lifestyle, etc."
+            >
+          </div>
+
+          <!-- Font Style -->
+          <div class="mb-8">
+            <label for="fontStyle" class="block text-gray-700 font-medium mb-2">Font Style</label>
+            <select 
+              id="fontStyle" 
+              name="fontStyle" 
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+            >
+              <option value="normal">Normal</option>
+              <option value="serif">Serif</option>
+              <option value="sans-serif">Sans-serif</option>
+              <option value="monospace">Monospace</option>
+            </select>
+          </div>
+          
+          <!-- Submit Button -->
+          <div class="flex items-center justify-between">
+            <button 
+              type="submit" 
+              class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 ease-in-out"
+            >
+              Publish Post
+            </button>
+            
+            <button 
+              type="button" 
+              class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-lg transition duration-300 ease-in-out"
+              onclick="window.location.href='/';"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+<%- include("partials/footer") %>

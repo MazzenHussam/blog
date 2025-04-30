@@ -1,0 +1,60 @@
+<%- include("partials/header") %>
+
+
+
+<section
+  class="min-h-screen w-full bg-cover bg-center bg-no-repeat flex items-center justify-center"
+  style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80');"
+>
+  <div class="bg-black bg-opacity-60 px-6 py-12 rounded-lg text-center max-w-3xl mx-auto">
+    <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Welcome to My Blog</h1>
+    <p class="text-lg md:text-xl italic text-gray-200 mb-8">
+      "Words are, in my not so humble opinion, our most inexhaustible source of magic."
+    </p>
+    <a href="/create" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full transition duration-300 ease-in-out">
+      Let it out
+    </a>
+  </div>
+</section>
+
+<section id="latest-posts" class="py-16 px-4 bg-gray-50">
+    <div class="container mx-auto max-w-7xl">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Latest Blog Posts</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Blog Card 1 -->
+
+        <% if (blogPosts.length ===0) { %>
+            <div class="col-span-full text-center py-12">
+                <p class="text-gray-600 mb-4">You haven't created any posts yet!</p>
+                <a href="/create" class="text-blue-500 hover:text-blue-600 border border-blue-500 hover:border-blue-600 font-medium py-2 px-4 rounded">Go ahead and create your first blog post</a>
+              </div>
+        <% }else { %>
+            <% blogPosts.forEach(post => { %>
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+            <% if (post.imagePath) { %>
+          <div class="h-48 bg-cover bg-center" style="background-image: url('<%= post.imagePath %>')" alt="<%= post.title %>" >
+          <% } %>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 text-gray-800"><%= post.title %></h3>
+            <p class="text-sm text-gray-500 mb-3"><%= post.createdAt.toLocaleDateString() %></p>
+            <p class="text-gray-600 mb-4"><%= post.content.substring(0, 100) %>...</p>
+            <a href="/view/1" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition duration-300 ease-in-out">Read more</a>
+          </div>
+        </div>
+        <% }) %>
+        
+      </div>
+      <% } %>
+      
+      <!-- Load More Button -->
+      <!-- <div class="text-center mt-12">
+        <a href="/blog" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 px-8 rounded-full transition duration-300 ease-in-out">
+          View All Posts
+        </a>
+      </div> -->
+    </div>
+  </section>
+
+
+<%- include("partials/footer") %>
